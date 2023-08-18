@@ -50,12 +50,12 @@ union protocol_dooya_free{
         uint8_t chanel:4;
         uint8_t comand:4;
         uint8_t payload_length;
-        uint8_t payload[0];
+        uint8_t payload[1];
     }common;
 };
 #pragma pack(pop)
 /*---------- variable prototype ----------*/
 /*---------- function prototype ----------*/
-
+extern void __dooya_free_protcol_recevie_thread(void);
 #endif
 /*---------- end of file ----------*/

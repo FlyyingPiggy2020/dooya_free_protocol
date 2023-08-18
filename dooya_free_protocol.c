@@ -74,9 +74,10 @@ uint16_t checksum_crc16_dooya(uint8_t *data, uint16_t len)
     }
     return crc16;
 }
-void dooya_free_protcol_recevie_thread(void)
+void __dooya_free_protcol_recevie_thread(void)
 {
     uint16_t _uscount = 0;
+    free_protocol_port_t *port = free_protocol_get_port();
 
     _uscount = port->_read_buf(recv_buf + recv_size, RECV_MSG_SIZE);
     recv_size += _uscount;
@@ -124,6 +125,4 @@ data_error:
 size_not_enough:
     return;
 }
-
-
 /*---------- end of file ----------*/

@@ -38,16 +38,14 @@ SOFTWARE.
 
 /*---------- macro ----------*/
 /*---------- type define ----------*/
-typedef struct free_protocol_port *free_protocol_port_t;
-struct free_protocol_port{
+typedef struct free_protocol_port{
     uint16_t (*_read_buf)(uint8_t *buf, uint16_t len);
-    uint16_t (*_send_buf)(uint8_t *buf,uint16_t len);
+    uint16_t (*_send_buf)(uint8_t *buf, uint16_t len);
     void (*_memmove)(void *dest,void const *src,uint16_t len);
-};
-extern free_protocol_port_t port;
+}free_protocol_port_t;
 /*---------- variable prototype ----------*/
 /*---------- function prototype ----------*/
-extern void dooya_free_protocol_port_registration(free_protocol_port_t _port);
+extern free_protocol_port_t *free_protocol_get_port(void);
 /*---------- end of file ----------*/
 
 

@@ -37,13 +37,13 @@ SOFTWARE.
 #include "../dooya_free_protocol.h"
 /*---------- macro ----------*/
 /*---------- type define ----------*/
-typedef enum cmd_dooya_free
+typedef enum 
 {
     READ = 0X07,
     WRITE = 0X02,
     CONTROL = 0X03,
     REQUEST = 0X04,
-};
+}cmd_dooya_free;
 /*---------- variable prototype ----------*/
 /*---------- function prototype ----------*/
 /*---------- variable ----------*/

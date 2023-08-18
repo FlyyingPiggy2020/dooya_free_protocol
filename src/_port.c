@@ -40,15 +40,11 @@ SOFTWARE.
 /*---------- variable prototype ----------*/
 /*---------- function prototype ----------*/
 /*---------- variable ----------*/
-free_protocol_port_t port;
+ free_protocol_port_t port;
 /*---------- function ----------*/
-void dooya_free_protocol_port_registration(free_protocol_port_t _port)
+free_protocol_port_t *free_protocol_get_port(void)
 {
-    #warning "请注册下面的接口"
-    if(_port){
-        port->_read_buf = _port->_read_buf;
-        port->_send_buf = _port->_send_buf;
-        port->_memmove  = _port->_memmove;
-    }
+    #warning "请使用DOOYA_PROT_REG，实现PROT里面三个函数"
+    return &port;
 }
 /*---------- end of file ----------*/
