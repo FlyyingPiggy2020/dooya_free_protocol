@@ -34,7 +34,7 @@ SOFTWARE.
 /*---------- includes ----------*/
 #include "stdint.h"
 #include "dooya_free_protocol.h"
-#include "inc/_port.h"
+
 
 /*---------- macro ----------*/
 #define ARRAY_SIZE(x)                   (sizeof(x) / sizeof((x)[0]))
@@ -122,7 +122,7 @@ data_error:
     goto next;
 
 size_not_enough:
-    return 0;
+    return;
 }
 
 

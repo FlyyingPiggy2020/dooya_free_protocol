@@ -47,6 +47,7 @@ struct free_protocol_port{
 extern free_protocol_port_t port;
 /*---------- variable prototype ----------*/
 /*---------- function prototype ----------*/
+extern void dooya_free_protocol_port_registration(free_protocol_port_t _port);
 /*---------- end of file ----------*/
 
 
