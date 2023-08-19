@@ -40,50 +40,27 @@ SOFTWARE.
 #define ARRAY_SIZE(x)                   (sizeof(x) / sizeof((x)[0]))
 #define FIELD_SIZEOF(t, f)              (sizeof(((t *)0)->f))
 
-#define RECV_MSG_SIZE 128
+#define RECV_BUF_SIZE 128
 /*---------- type define ----------*/
 
 /*---------- variable prototype ----------*/
-static uint8_t  recv_buf[RECV_MSG_SIZE];
+static uint8_t  recv_buf[RECV_BUF_SIZE];
 static uint32_t recv_size = 0;
 /*---------- function prototype ----------*/
 
 /*---------- variable ----------*/
-const uint16_t CRC16_Tab[] = {0x0000, 0xCC01, 0xD801, 0x1400, 0xF001, 0x3C00, 0x2800, 0xE401,
-                              0xA001, 0x6C00, 0x7800, 0xB401, 0x5000, 0x9C01, 0x8801, 0x4400};
+
 /*---------- function ----------*/
-
-uint16_t _crc16(uint8_t crcbuf, uint16_t crc_16)
-{
-    uint8_t temp = ((uint8_t)(crc_16 & 0x000F)) ^ (crcbuf & 0x0F);
-    crc_16 >>= 4;
-    crc_16 ^= CRC16_Tab[temp];
-    temp = ((uint8_t)(crc_16 & 0x000F)) ^ (crcbuf >> 4);
-    crc_16 >>= 4;
-    crc_16 ^= CRC16_Tab[temp];
-    return crc_16;
-}
-
-uint16_t checksum_crc16_dooya(uint8_t *data, uint16_t len)
-{
-    uint8_t i;
-    uint16_t crc16 = 0xffff;
-    for (i = 0; i < len; i++)
-    {
-        crc16 = _crc16(*data++,crc16);
-    }
-    return crc16;
-}
 void __dooya_free_protcol_recevie_thread(void)
 {
     uint16_t _uscount = 0;
     free_protocol_port_t *port = free_protocol_get_port();
 
-    _uscount = port->_read_buf(recv_buf + recv_size, RECV_MSG_SIZE);
+    _uscount = port->_read_buf(recv_buf + recv_size, RECV_BUF_SIZE);
     recv_size += _uscount;
 
     uint16_t pos = 0;
-    uint16_t cnt = RECV_MSG_SIZE;
+    uint16_t cnt = RECV_BUF_SIZE;
 next:
     if (recv_size < FIELD_SIZEOF(union protocol_dooya_free, common)){
         goto size_not_enough;

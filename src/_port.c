@@ -40,11 +40,11 @@ SOFTWARE.
 /*---------- variable prototype ----------*/
 /*---------- function prototype ----------*/
 /*---------- variable ----------*/
- free_protocol_port_t port;
+static free_protocol_port_t port;
 /*---------- function ----------*/
 free_protocol_port_t *free_protocol_get_port(void)
 {
-    #warning "请使用DOOYA_PROT_REG，实现PROT里面三个函数"
+    #warning "请使用DOOYA_PROT_REG,实现PROT里面三个函数"
     return &port;
 }
 /*---------- end of file ----------*/

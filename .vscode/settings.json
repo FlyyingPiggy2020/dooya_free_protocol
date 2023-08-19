@@ -44,7 +44,9 @@
     "remote.SSH.showLoginTerminal": true,
     "files.associations": {
         "dooya_free_protocol.h": "c",
-        "_port.h": "c"
+        "_port.h": "c",
+        "_misc.h": "c",
+        "stdint.h": "c"
     },
     "files.encoding": "gb2312",
 }

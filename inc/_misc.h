@@ -23,46 +23,22 @@ SOFTWARE.
 */
 /*
  * Copyright (c) 2023 by Moorgen Tech. Co, Ltd.
- * @FilePath     : _receive_packet_parse.c
+ * @FilePath     : _misc.h
  * @Author       : lxf
- * @Date         : 2023-08-18 15:40:46
+ * @Date         : 2023-08-18 18:59:36
  * @LastEditors  : FlyyingPiggy2020 154562451@qq.com
- * @LastEditTime : 2023-08-18 15:41:10
- * @Brief        : 杜亚开放协议接收报文解析
+ * @LastEditTime : 2023-08-18 19:03:00
+ * @Brief        : 
  */
 
 
 /*---------- includes ----------*/
 #include "stdint.h"
-#include "../dooya_free_protocol.h"
 /*---------- macro ----------*/
 /*---------- type define ----------*/
-typedef enum 
-{
-    READ = 0X07,
-    WRITE = 0X02,
-    CONTROL = 0X03,
-    REQUEST = 0X04,
-}cmd_dooya_free;
 /*---------- variable prototype ----------*/
 /*---------- function prototype ----------*/
-/*---------- variable ----------*/
-/*---------- function ----------*/
-void _receive_packet_parse(const uint8_t *recv_buf, uint32_t recv_len)
-{
-    protocol_dooya_free_t protocol = (protocol_dooya_free_t)recv_buf;
-
-    do{
-        if(protocol->common.command == READ){
-
-        }     
-    }while(0);
-}
-
-void _read_packet_parse(void)
-{
-    
-}
+extern uint16_t checksum_crc16_dooya(uint8_t *data, uint16_t len);
 /*---------- end of file ----------*/
 
 

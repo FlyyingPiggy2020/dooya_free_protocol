@@ -37,6 +37,8 @@ SOFTWARE.
 #include "stdint.h"
 #include "inc/_port.h"
 #include "inc/_receive_packer _parse.h"
+#include "inc/_misc.h"
+#include "inc/_ops.h"
 /*---------- macro ----------*/
 /*---------- type define ----------*/
 typedef union protocol_dooya_free *protocol_dooya_free_t;
@@ -48,7 +50,7 @@ union protocol_dooya_free{
         uint8_t sync_hi;
         uint8_t sync_lo;
         uint8_t chanel:4;
-        uint8_t comand:4;
+        uint8_t command:4;
         uint8_t payload_length;
         uint8_t payload[1];
     }common;
