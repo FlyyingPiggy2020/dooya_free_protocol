@@ -36,28 +36,12 @@ SOFTWARE.
 /*---------- includes ----------*/
 #include "stdint.h"
 #include "inc/_port.h"
-#include "inc/_receive_packer _parse.h"
-#include "inc/_misc.h"
-#include "inc/_ops.h"
 /*---------- macro ----------*/
 /*---------- type define ----------*/
-typedef union protocol_dooya_free *protocol_dooya_free_t;
-#pragma pack(push)
-#pragma pack(1)
-union protocol_dooya_free{
-    struct {
-        uint8_t type;
-        uint8_t sync_hi;
-        uint8_t sync_lo;
-        uint8_t chanel:4;
-        uint8_t command:4;
-        uint8_t payload_length;
-        uint8_t payload[1];
-    }common;
-};
-#pragma pack(pop)
+
 /*---------- variable prototype ----------*/
 /*---------- function prototype ----------*/
 extern void __dooya_free_protcol_recevie_thread(void);
+extern void _dooya_free_porotocol_common(uint8_t cmd, uint8_t start_or_reg, uint8_t *data, uint8_t len);
 #endif
 /*---------- end of file ----------*/

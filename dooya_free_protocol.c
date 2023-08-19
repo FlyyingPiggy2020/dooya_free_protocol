@@ -33,8 +33,10 @@ SOFTWARE.
 
 /*---------- includes ----------*/
 #include "stdint.h"
-#include "dooya_free_protocol.h"
-
+#include "inc/_misc.h"
+#include "inc/_port.h"
+#include "inc/_ops.h"
+#include "inc/_receive_packet_parse.h"
 
 /*---------- macro ----------*/
 #define ARRAY_SIZE(x)                   (sizeof(x) / sizeof((x)[0]))
