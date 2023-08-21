@@ -39,9 +39,9 @@ SOFTWARE.
 /*---------- macro ----------*/
 /*---------- type define ----------*/
 typedef struct free_protocol_port{
-    uint16_t (*_read_buf)(uint8_t *buf, uint16_t len);
-    uint16_t (*_send_buf)(uint8_t *buf, uint16_t len);
-    void (*_memmove)(void *dest,void const *src,uint16_t len);
+    uint16_t (*_read_buf)(uint8_t *buf, uint16_t len);//串口接收
+    uint16_t (*_send_buf)(uint8_t *buf, uint16_t len);//串口发送
+    void (*_memmove)(void *dest,void const *src,uint16_t len);//内存移动
 }free_protocol_port_t;
 /*---------- variable prototype ----------*/
 /*---------- function prototype ----------*/

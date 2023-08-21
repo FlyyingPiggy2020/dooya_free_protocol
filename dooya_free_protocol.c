@@ -62,7 +62,7 @@ void __dooya_free_protcol_recevie_thread(void)
     recv_size += _uscount;
 
     uint16_t pos = 0;
-    uint16_t cnt = RECV_BUF_SIZE;
+    uint16_t cnt = FIELD_SIZEOF(union protocol_dooya_free, common);
 next:
     if (recv_size < FIELD_SIZEOF(union protocol_dooya_free, common)){
         goto size_not_enough;

@@ -38,10 +38,18 @@ SOFTWARE.
 #include "inc/_port.h"
 /*---------- macro ----------*/
 /*---------- type define ----------*/
-
+/**
+ * @brief 针对READ命令的解析
+ * @param {uint8_t} start 起始地址
+ * @param {uint8_t} length 长度
+ * @param {uint8_t} *data 接收到的内容
+ * @return {*}
+ */
+typedef void (*read_packet_parse_cb)(uint8_t start, uint8_t length, uint8_t *data);
 /*---------- variable prototype ----------*/
 /*---------- function prototype ----------*/
 extern void __dooya_free_protcol_recevie_thread(void);
 extern void _dooya_free_porotocol_common(uint8_t cmd, uint8_t start_or_reg, uint8_t *data, uint8_t len);
+extern void register_read_packet_parse(read_packet_parse_cb _cb);
 #endif
 /*---------- end of file ----------*/

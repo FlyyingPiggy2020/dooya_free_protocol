@@ -44,17 +44,18 @@ union protocol_dooya_free{
         uint8_t type;
         uint8_t sync_hi;
         uint8_t sync_lo;
-        uint8_t chanel:4;
         uint8_t command:4;
+        uint8_t chanel:4;
+        uint8_t payload_start;
         uint8_t payload_length;
         uint8_t payload[1];
     }common;
 };
 #pragma pack(pop)
+
 /*---------- variable prototype ----------*/
 /*---------- function prototype ----------*/
 extern void _receive_packet_parse(const uint8_t *recv_buf, uint32_t recv_len);
-extern void _read_packet_parse(void);
 /*---------- end of file ----------*/
 
 

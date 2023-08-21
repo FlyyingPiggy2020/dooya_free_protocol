@@ -35,6 +35,7 @@ SOFTWARE.
 /*---------- includes ----------*/
 #include "stdint.h"
 #include "../inc/_receive_packet_parse.h"
+#include "../dooya_free_protocol.h"
 /*---------- macro ----------*/
 /*---------- type define ----------*/
 typedef enum 
@@ -46,22 +47,27 @@ typedef enum
 }cmd_dooya_free;
 /*---------- variable prototype ----------*/
 /*---------- function prototype ----------*/
+static read_packet_parse_cb _read_packet_parse_cb;
 /*---------- variable ----------*/
 /*---------- function ----------*/
+
+
 void _receive_packet_parse(const uint8_t *recv_buf, uint32_t recv_len)
 {
     protocol_dooya_free_t protocol = (protocol_dooya_free_t)recv_buf;
-
     do{
         if(protocol->common.command == READ){
-
+            if (_read_packet_parse_cb){
+                _read_packet_parse_cb(protocol->common.payload_start, protocol->common.payload_length, protocol->common.payload);
+            }
         }     
     }while(0);
 }
 
-void _read_packet_parse(void)
+void register_read_packet_parse(read_packet_parse_cb _cb)
 {
-    
+    #warning "请注册这个回调函数"
+    _read_packet_parse_cb = _cb;
 }
 /*---------- end of file ----------*/
 
