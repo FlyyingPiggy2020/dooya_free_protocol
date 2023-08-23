@@ -36,6 +36,7 @@ SOFTWARE.
 #include "stdint.h"
 #include "../inc/_receive_packet_parse.h"
 #include "../dooya_free_protocol.h"
+#include "../inc/_misc.h"
 /*---------- macro ----------*/
 /*---------- type define ----------*/
 typedef enum 
@@ -46,21 +47,26 @@ typedef enum
     REQUEST = 0X04,
 }cmd_dooya_free;
 /*---------- variable prototype ----------*/
+static uint8_t switch_protocol[10] = {0x55,0x00,0x00,0x02,0x00,0x02,0xfe,0xfe,0x9C,0xE8};
 /*---------- function prototype ----------*/
 static read_packet_parse_cb _read_packet_parse_cb;
 /*---------- variable ----------*/
 /*---------- function ----------*/
 
-
 void _receive_packet_parse(const uint8_t *recv_buf, uint32_t recv_len)
 {
+    uint16_t crc16 = 0;
     protocol_dooya_free_t protocol = (protocol_dooya_free_t)recv_buf;
+    free_protocol_port_t *port = free_protocol_get_port();
     do{
         if(protocol->common.command == READ){
             if (_read_packet_parse_cb){
                 _read_packet_parse_cb(protocol->common.payload_start, protocol->common.payload_length, protocol->common.payload);
             }
-        }     
+        }
+        if(protocol->common.command == REQUEST){
+            port->_send_buf(switch_protocol,10);
+        }
     }while(0);
 }
 
